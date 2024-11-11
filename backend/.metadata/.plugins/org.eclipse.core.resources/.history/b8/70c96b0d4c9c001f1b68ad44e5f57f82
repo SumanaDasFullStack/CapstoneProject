@@ -1,0 +1,5 @@
+package food.com.repository;
+
+public interface RestaurantsRepository {
+
+}

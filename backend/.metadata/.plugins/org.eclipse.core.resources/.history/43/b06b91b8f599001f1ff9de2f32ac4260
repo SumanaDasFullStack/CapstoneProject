@@ -1,0 +1,13 @@
+package food.com.entity;
+
+import jakarta.persistence.Entity;
+import lombok.Data;
+
+@Entity
+@Data
+public class Login {
+	private String emailid;
+	private String password;
+	private String typeofuser;
+
+}
