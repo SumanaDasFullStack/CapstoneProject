@@ -1,0 +1,5 @@
+package food.com.entity;
+
+public class Payment {
+
+}
