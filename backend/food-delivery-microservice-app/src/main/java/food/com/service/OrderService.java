@@ -1,5 +1,7 @@
 package food.com.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,4 +44,12 @@ public class OrderService {
 
 	        return orderRepository.save(order);  // Save updated order
 	    }
+	    
+	    public List<Orders> getAllOrders(){
+	    	return orderRepository.findAll();
+	    }
+	    
+//	    public List<Orders> getOrdersActive(){
+//	    	return orderRepository.findAllById(null)
+//	    }
 }

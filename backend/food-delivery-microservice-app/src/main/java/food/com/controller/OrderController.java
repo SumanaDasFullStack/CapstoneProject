@@ -1,5 +1,7 @@
 package food.com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +25,11 @@ public class OrderController {
     @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Orders createOrder(@RequestBody Orders order) {
         return orderService.createOrder(order);
+    }
+    
+    @GetMapping("allstatus")
+    public List<Orders> getAllOrder() {
+        return orderService.getAllOrders();
     }
 
     @GetMapping("getOrder/{id}")

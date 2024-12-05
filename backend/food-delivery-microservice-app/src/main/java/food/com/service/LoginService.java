@@ -1,5 +1,6 @@
 package food.com.service;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,4 +68,24 @@ public class LoginService {
 		
 	}
 
+	public List<Login> getAllUsers(String searchText){
+		return loginRepository.findByNameContainingIgnoreCaseOrEmailidContainingIgnoreCase(searchText,searchText);
+	}
+	
+	public Login updateUser(String emailid, Login user) {
+		
+	Login existingUser=loginRepository.findById(emailid).orElseThrow(() -> new RuntimeException("User not found"));
+	
+	existingUser.setName(user.getName());
+	existingUser.setAddress(user.getAddress());
+	existingUser.setIsAdmin(user.getIsAdmin());
+	if(user.getIsAdmin())
+		existingUser.setTypeofuser("admin");
+	else
+		existingUser.setTypeofuser("customer");
+	
+	return loginRepository.save(existingUser);
+		
+	}
+	
 }
