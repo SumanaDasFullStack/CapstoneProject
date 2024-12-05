@@ -34,6 +34,7 @@ public class OrderService {
 	        
 	        // Process payment (you can add more logic for actual payment processing)
 	        payment = paymentRepository.save(payment);  // Save payment first
+	        order.setPaymentId(payment.getId());
 	       // order.setPayment(payment);  // Link the payment to the order
 
 	        // Update order status to "Paid"

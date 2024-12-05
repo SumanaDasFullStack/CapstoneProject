@@ -29,4 +29,9 @@ public class OrderController {
     public Orders getOrder(@PathVariable Long id) {
         return orderService.getOrder(id);
     }
+    
+    @GetMapping("track/{id}")
+    public Orders getOrderTrack(@PathVariable Long id) {
+        return orderService.getOrder(id);
+    }
 }
