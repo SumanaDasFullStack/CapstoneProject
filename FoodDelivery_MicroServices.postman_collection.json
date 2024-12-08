@@ -1,0 +1,618 @@
+{
+	"info": {
+		"_postman_id": "76bfa0d0-01c3-475c-91ea-9bd5b37b41d9",
+		"name": "FoodDelivery_MicroServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38674309"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailid\" : \"debajyoti@gmail.com\",\r\n    \"password\" : \"debajyoti@123\",\r\n    \"typeofuser\" : \"customer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/login/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"login",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignIn",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"emailid\" : \"sumana@gmail.com\",\r\n    \"password\" : \"sumana@123\",\r\n    \"typeofuser\" : \"customer\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/login/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"login",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddRestaurant",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n    \"name\": \"Arsalan\",\r\n    \"description\": \"It is a 3 star restaurant. It's have more than 10 outlets in West bengal\",\r\n    \"emailId\": \"arsalan123@gmail.com\",\r\n    \"phoneNumber\": \"2345324561\",\r\n    \"address\": \"Dharmatala, Kolkata -700002\",\r\n    \"openTime\": \"11:30 AM\",\r\n    \"closeTime\": \"10:00 PM\",\r\n    \"rating\": 7.0,\r\n    \"createdAt\": \"2020-11-07T16:30:35\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/restaurants/addRestaurant",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"restaurants",
+						"addRestaurant"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllRestaurants",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/restaurants/allRestaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"restaurants",
+						"allRestaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddMenu",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n    \"name\": \"Kosha Chicken\",\r\n    \"category\": \"Main Course\",\r\n    \"image\": \"data:image/jpeg;base64,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\",\r\n    \"description\": \"Kosha Chicken is yummy\",\r\n    \"price\": 250.0,\r\n    \"isAvailable\": true,\r\n    \"createdAt\": \"2020-11-07T16:30:35\",\r\n    \"restaurant\": {\r\n    \"restaurantId\": 2\r\n  }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/menu/addMenu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"menu",
+						"addMenu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateMenu",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n    \"name\": \"Kosha Chicken\",\r\n    \"category\": \"Main Course\",\r\n    \"image\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQAlAMBIgACEQEDEQH/xAAcAAAABwEBAAAAAAAAAAAAAAAAAgMEBQYHAQj/xABAEAACAQMCAwYCCAQFAgcAAAABAgMABBESIQUxQQYTIlFhcYGRBxQjMlKhsfAzQtHhFWKCwfEkkhdTY3KywtP/xAAaAQACAwEBAAAAAAAAAAAAAAAABQIDBAEG/8QAJREAAgICAgICAQUAAAAAAAAAAAECAwQREiEiMUFRExQyYXGR/9oADAMBAAIRAxEAPwDaFkMrBGIweeK6/wBgMp186PIV0HRgt0xRIs7iTl60AdRBKA78/Si94S2g4wdq5Lq1fZ50jypQ6dHhxqxQAV1EA1JnJ23oIO+GX5jypLvlhDPcMFQLklzgCs27XfSlDbu1t2dVZpNwblh4B/7R/N+lRlJR9kowlL0aRc3kVpGzzzRRQLsXkOB86qvEPpI7L2DMIbx7qRcjEEZK/wDccD86xa/vOMcfmNxezTXTfic7D26D4VyLg8hIMrHz2GazyyUjZDDk/Zpt19MNgR9lwuZz01TBf0Bpp/4zuu0fAo9I6tet/wDlVMj7OiUaoo3KgeLIO1Kxdmo5ldUdCw9eXxqn9Yvsu/Qoutr9MNnqU3HCXjPmlzq/VVqxcO+kns5xEhJ7mS1b/wBWM4H+oZFZCezbRxoZowpxnJyD6ZHTNIHgZ0643ZWHnvjFSWWvsg8L6PRttewzxLJYTRTwncOjah+VOBGuNf8ANzrzTaXPF+CTtPaSyqynd4/3v8Qa0Psr9KQldbfjy7/+fGMfNeR+HyFaYXRkZbMecDUVYynS/L0oOe48K9fOiQ3Nvd2yT2UqSRvurxnINKxcj3m5z1q0oAsQdQ7czvtRUkMrBGIwfKuNq1nSDp6YpSQroPd41dMUADuE9fnXaQIk8nrlACgjaI62xgeVdf7YYXIxXBIZCEYbHnXWxb7qclvOgAK4hGhuY8qj+KX0HDLaS7upUihjGpmJ5UtezxR27zzuECKSxJwAB1rCO2Hae57V8UFtaM4sI20xINu8P4z++VQnNRWy2qt2S0hTth20v+1NybW0EkXD9XghX70nq39OVNeF8BVNMlwNTDcrjYf1p/wfhaW0QURhpTzYn9PSppIgiL3oGktgjJUHcfv40mvyXJ9DqqhQWtDSOziiVCFDljgEA4HpXZ1hQAxBiyg6ieVPdE85wGQqGyANtjt8+VJ3H/Shvswzf2rE7dvRqUTtmHkVIdiXYu7MC2DywMb9Pypa+msbeRoWMUsqgERqP5uW+OdMFvriOF0A7nWAWdQM+1NraFmk1eKKNm0kAk4HPb3OTt50cNtthr5JCVriWczTvG0UgClFOSMchjy6g12fh0siHu4S2nxHSNgPam1rGYp3RY8b9SN9qtvDwkVuiD7RiCSmepG5Jz5frUbLOMkQk+K2UiW37sgOAytudJ3+fWom94PDc6njGh/xDr/WtKc2lzciFo49ZbBXHM9On61B8V4aYlklt7cmNcZcKRj03/LnzxVtOQ/6IvUumiudlu1vEuyl8sNzlrZjurHYj0P79fOtv4VxK245ZpdWUoZCPEORU+VYTxy2N9cJE6gxhcu6ndc5wMdDzO+PKj9ju0l52S4ykEzs9q5AI5hlzgfv4ezmi/aSYrycbXcT0EJBGNB3I22oqxtEdbYwPKkrKaDiFpFdwOHjlXUCppVXMpCMMA1tF4fv18jQrncL5mhQB2RVVCUADDlikg+A3ebj1rqxmNg7YwPKontNxKK04fNcO2I4ULvnyxQBnP0s9oyWHBbOTHeYe409F3wvx5+1VzgPD1t7UNIh72QZOf5R5VE2srcX4xPe3h+85kkzyHp7Db5VeuD8Pa6WOQrpiH8xGflSbOyFEd4lShHbEYC0MYRmOrVyOdutLLIz5DYIx93mP+ak5uD2/wBUeWObMoyc55+hxyqP3gCyFt12BzSxyTSf2bYtP0S1hbsNGgc1DZ64PQepG+fIj1qRSzh+rHMeog5LdANvSo3h193x+sSASK0mSM6cnpUobwSFTHGIiuRgdRnYavlWSTW25PpfBTPmmNpuGRLjEYUdceXt/vTe54PH9WUrK8U3XUvhYeW24NP2lyoDrufvHGx9fT2o97AqJqhbSun3yTv8OeOVdpl05R719kXOSaTZTGSWC8MM2E07Nq3B/YNP0vRgx2oTVKoEzkZZh5Z9PL0FDjcCXFq+sqAiloj6jmPby8vjUeIJpOHQ3lgrTxMgjliUZZGxg/1rWlGxKSZo2takTREEmNTLrwCAW3J6Z9adWF9btIYr0hHZNMbMuSvry3FU5pLo6HaIkDpLsOVPPrV2mkMqsGPizuPf/ioqmUWnsJqMloluM8Bi4ijzGSNLmNWViABgjkDyHt54rP72AXdoBIApKgo2eR5Y+NW1eIS28Mzae9mVvG7JyHTB69Kq7R55qQG5Acq24+4rRTKD1plt+iHtNNHI3Bb12wWwhbo3l8d/iK1+QIFzGBqBHKvMrNJYcUgu430kthnHQg8/0PwNehuznERxThFrxHYa0xIBvpcbMPnmnVM+URNkV8JD7XJ5tQpfv09flQq4zCZlMnhIwD1rMvpev/qnBTbox1XMgj28huf0FaZdaI4XZMBgNsVhn0v3bSXdlEW2Gp9/gKhN+JZUtyRCdloPrUiWynAdsyP+FRWmm2eW1isotFvEqYjHoByOevrWe9kHW2i1kA96oOry3zirzBxQSIiREFl3VsjY9a81nObtTS2kP614LXskO8UWqQxKqyQju3C9OfL0qF4tDLM579mjkQ50YxlfY9R+ntUkLkJexzsqkuQGOM5XFOOLwtdjvDrOhfCN/u9DkjJHrWaLSbmjq8Wkyu2k/cXPdlgEJwc8qmo7juplVzmNzg5PInlVZvFMVzocYUjA3p3b3mq17mUKzLsupsEipWUqfkvk7cpNdf4WAzMe8G+qPYjH6flSlpcoEHeoXiBwVRt8EHPT8vSou3mZ7qzlDMdaEMCeeN8/maUimxpbYqRq2222rJ+OVUtxI1uNsNMf8Rj7wOqeKNmOlsbEYH5+LpVFtLuXgPGpUSRguo+EbiROlXd7lzHHCH1BXJGf5c9PL4VUO19g31yC5iBCBCpx7nGfnWzHnF2OPxIkk1Hsn7y5VoGu4dJhJyRzKsOpHnkb586i7qwmm0mwdXd9JWJj94kbgGo6yvHtULA94jgBoiAeZ/frT/8AxZWdRCFjZeexI55z0xirlGcX9onpa6GCcUmuA0fcshORIpUjHpii/UkYJIW8Q2GOXvTiJdU0j6PtHYsSeZyeZpwo8OGjAIPLlVjlx/aGt+yq8Tt8275ySmW+R/pmtM+hziJueGXlg5zoZZV+I0t+aZ/1VSb6AlpRgaSPET0B/wCak/obuXi47JBnSJLeQHfqNBH/ANqZYk9sXZ0PHZtH1cfiPyoUl3knQtQpkKBvehooi7chz3rCvpSbvOM2x8ov9zW58Vk72ApjGRWI/SXBpvbWXzyufj/eq7PRbR+8a8GhzaWxQck+8OhxU5GqJmTLBgNLMvT0NMeAGMWEWWycDIPQcqk+6e3ysgUo7E55A59etIbZeTPQQXSJHh8pkjCOvi5q3Qipu1lmFvoeImPGA3Ub9D5VXbOYx3AQMpYHI35VYMK4Dqpzpzg0svk6pbXWzsltJMZXvC1u1wQqeI5Y9P7+lRsttwaz+zuZbqVgQCRnn0xgVOPdFkaOUfaeYGx/e1RtzJC7Izxrqz4B5kdfT3rtU5+m+iizkk23rXrRy6srZoY0s7pkljjKxhz+LGPjt+dNuH3Bdmt7pe7mhGk+/t7YpG/t5ZVmQBnbQduXixkEfED5VD/4lJ9fRptcc6ppkLbHIJ+e1ao1OcH8lWLzg/L0y2hhGVDlgM6c4/P50lehbm2ZpnZkOTyG37zRO9F1bqwBO4J5jpRLQSoCpZTFuCCM59f1rIouPfyhh8EILISzAeLUo5LjB9afwcImnOI42dyNRI3IHn5elLQnueJLCrAOwOkkHBFTVrdcTtFLL9XMYXAEaE8uefWtMrmmk2Re0vEiBwqeMFlHibbB5j4c6LNZta6VlRl7zxDI2NWWG4naOVriLuhqU+J9znOMb/0prxG7itrNriJ4+8CtqXmD898Y51W5yckQVst6KnfptoCNzHt8KT+irw9sYG/lBkU+3duf6UW5uEZmfUQQNRXl605+h+BrjtIZOiRSsT64VR/8jTnCTTM2brgzbBNH50KJ9X/zflQpuIxvxOFRbsyjcVkP0iWjXHDy/WJ8/A/sVsEkb4ywIHrVH7UWS3CSxbEOpHKoSW0Sg9S2Zz2ZlV7Vweh39etXTh8K30axSldJXZM4Ax5dOX6elUTgOLDik1nc4j1ZCFhy8v8AcVaLC7NrdLLEdXRcciOo+Iz+VIcqvUmegqlyhtCE0EnCuJvbzaymcxtnJI96s3DrgSw4XGpBjDCmvakQ8R4UbmF1LR+IAgllxzHLz68qj+A3qyIjrsCQrZHlWK+t2V7ftFkZckTFzE9z4dXhB3CnA9c/3zSMNtFqSO4KK6sDGxGxGcHJ54p1q0AsAfQDln1oraJG0sFLDmp67/pWOFs63/BJxUloeWtst5xAmBInCx5OgHT7b0047wi04r3SzxrazBSEn+9lwOROTnkfiPSn3Drz6rKS0LZPIJupHkeWCPPrT4ywXKyRSqHt5N9LHcf35H50ypuhxWnpv2YpKUJ+ujNOG3U9rdyW8+QY3KHfG3mKtXCYoZIpSy+EP4NPz2NQHaayjg4sbqGVXDL9psRuNsDn086lOBySJp0+PScFTzO/Q1XlRThyia024jHt1bXVjHbX1qcFGwSvIA8iT0z+tM+H9pZJSI5wwfSNYU7/ACJwauPEZIruI20luXhkXTpZfM9aonaHst9R7mSFnKyMw8ZGYyMbZ/fSpY8oWx4TXaIJyXsmk4uxk7zXK3Ln/v50biHGLY2N3boEM8yaSN9Iz5D4mqk1jxC0lWKZ7mLG7CQEHHxp6IJwqmRid+eNx/ernjwjLZLakhlxOUxW0mvOo+AY5Vd/oTs2W14hxAqRgJChPUklm/IpWecbZ550hX7uM6s9OZ/LNbj2A4W3B+z1nBKml2UyyjyZt8fAYHwpriQ+RbnT60WDvn8/yrlL95F+IUK3iwI0gmUx4xq2qvcds9C6tjnlVidFiUuvMcqbXEP1uNlkGQBtigDEu2fCyVN/AuJIiXPqv8w+H3h/qocBntJIY5biYhSMawNw23T9/rV545YlGdRsOhA5Hoaze9s34HxEuif9BcNgqvKFj0Hpz0+mRzBrDlU849DHEv14ssl7eBrSSO0XvLdF06lJUnO2ASOVM+Ax9xAUJJZDqIztkf2peB++RDHIGjI6Hn1+VN1xDxHKspGTnB86T66cENUWaPMigKQV9+YoAZIOOQxnP3ajrS7RT3e2kfd0nf2p8pZnBRH23JxypdZW0TFmkZF1Yxtvk45UtHcITGyNvuSOvrSOpDEyEgaRuBvvzqP8cUuHkIVjkkemelVVw3sGkxl20YxWRRTuWUgeVPOy8q3Fs7MRpOlt+gxgn8qrXbO7cwx5MYeSRcBSTsPLPSluzl99VXBJyDv5aDz/AK0z/A3ipfJBy70XjiF7bRy4uGYSNHqUhs+W1QHHOLwt3b27gOo8GQCRkZ0nPqKiOK8XaKcm2AkYhlA1HJB5cutRtvBKftpk1SPk8+p6VOqjXk+iCST0TUfFri7tbe2vcS90dQLbn2zzNIXl1DDGWbxHO/r6Ug6rADM8mhUHLGCTUdAk/Gr5YxCWUNpEYJXvGPJc9M9T/KMn30wrdk9nJTjVEmuyHBm41xlJp0GhCJZDjbQDkD/Uw5fhQ9CK2uFtcXdjKk9arnZThA4TaiMaDKxDysF0hmwBsOgAAAHQACrQ0awrrT7w5ZpzVDhHQjvtdk9hfq5/EPlQovfv6fKhVhSdjVw4LZx60aXxKO6389NBpBKpQA5PnQX7A5bkfKgCPvrJZYjqxq9apfF+EiRXSaIPGwIYONiPL97jYitDePv8suw5Uwv7SOZSqqdR2zXGtnU9dmJTJcdnJiZA0/DywxIcFo8/iI5HybkfQ7U/eeO4lLKutG2DDPpz/v51duJcHCqwkRWU5BBGefP39qoXFOylzaM1xwZygG5hYnT8CeXscj1FL7sRSfKPsZUZmupDuORonjJPd6l2y2wbIxipGw4iJHMJlTvB904wCKpK8angk7riMTB121evn5VIWXE7SSNRlQDlmB55pdZitryQxjbGS6Zc5TI76u7yOiKRhtupprxAgWc2UGcHIIABFQkPErlMJCe8XGcF8afjSEvELi4ZwFCaR97OTWaOLJS7J7InjUTy3cKsdl32Occqc2oKDSZDgjbI6UvFAXlDyZdmPMjnTm4ngtI1Zu7BI+71rc5dcUiHHtsRs7IajJp0qN843NKXs8drCxuGzv4Y8bmo6bjzOsi26mQ+Y6fPaluE9l+JcclE92GjgP49WCN/Yt8MD1qdePOx+RVZkQrQ2iN1xy5WKDUFJxqAyfZc8z5k7Dr66h2R7LJw6NH0qZSuPByjHVR8cEnmT5AAB12a7NWtlEEt48NgBnKgEgdNtgPQbVbYI1tE0EZzyxTSqlQXQovyJWv+A8CxxxBTgMBg5rkYYOC+cetdMRkOsEAHeutIJhoUHJ86uM4pqj81rlJ/V28wKFABmjESl1ySK4v2xw42FFjL6xqJx60aUYA7rbffTQBxnMJ0qMijGIKNe+eeKEYBX7TGf81EBfXzIXPXlQAlJCt3sw6Z2qIvuFBPujI571Py405jxnO+K5GAwPejfpqoAoPFezFreoxuYAxIzkDBqnXnYCF2Js5nhPPSdxW0TQ6nwAdOfKkbnh0RQ92Bq9Kg60/ZZG2UfTMNbsbxe3YhL0FT5INx8SKWTsrxPA1cTcL/AJbUH9XFbB/hCHV3g/7hikZODYc6eXoKr/BH6LVlWfZlkXZiXk13eyEefdxqfzcj5U5XsWsrZnI055EmQ/M4H5VqH+CxBcgAnp505tOGxqT3i/8AdXVTBfBF5Fj+SlcD7HWUOl0t8uD9598ew5D4CrdZcPCMFYelSJhEbYhGBjO1OAECbBQ2KtUUiltv2JiJbZcp7UdQJhqbpyxRYixP2mcdNVCXOfsttv5a6cAZTGdAAwNq60YiGtckijKF0AtjOOtJxltY1k4/zUAD6w/kKFLBYvJa5QAJ/wCC1J23NqFCgAtxu5pc/wAM+1ChQAjbfePtXbjdh7UKFACkZ+xHsaQgP2o9qFCgBS5/lo8P8Jf31oUKAG8J+1X3/wBqWuNwtChQAaD+H8aQH8b/AFUKFAC1xvGffFctvun3oUKAEpf4re9LXH8Jq7QoAa0KFCgD/9k=\",\r\n    \"description\": \"Kosha Chicken is yummy\",\r\n    \"price\": 250.0,\r\n    \"isAvailable\": true,\r\n    \"createdAt\": \"2020-11-07T16:30:35\",\r\n    \"restaurant\": {\r\n    \"restaurantId\": 2\r\n  }\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/menu/addMenu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"menu",
+						"addMenu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllMenu",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/menu/allMenu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"menu",
+						"allMenu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MenuDetails",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/menu/menuDetails/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"menu",
+						"menuDetails",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MenuRestaurantWise",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/menu/menus/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"menu",
+						"menus",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchMenus",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/menu/search?searchText=cur",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"menu",
+						"search"
+					],
+					"query": [
+						{
+							"key": "searchText",
+							"value": "cur"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n    \"totalPrice\": 250.0,\r\n    \"customerName\": \"Sumana\",\r\n    \"address\": \"Kharagpur\",    \r\n    \"status\": \"Pending\"\r\n    \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/orders/createOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"orders",
+						"createOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "orderPay",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \r\n    \"totalPrice\": 250.0,\r\n    \"customerName\": \"Sumana\",\r\n    \"address\": \"Kharagpur\",    \r\n    \"status\": \"Pending\"\r\n    \r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/orders/createOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"orders",
+						"createOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrderbyId",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/orders/getOrder/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"orders",
+						"getOrder",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllOrder",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/orders/getOrder/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"orders",
+						"getOrder",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/orders/getOrder/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"orders",
+						"getOrder",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByIdUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/login/users/getById?emailid=sumana@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"login",
+						"users",
+						"getById"
+					],
+					"query": [
+						{
+							"key": "emailid",
+							"value": "sumana@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blockUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/login/users/getById?emailid=sumana@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"login",
+						"users",
+						"getById"
+					],
+					"query": [
+						{
+							"key": "emailid",
+							"value": "sumana@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteMenu",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/login/users/getById?emailid=sumana@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"login",
+						"users",
+						"getById"
+					],
+					"query": [
+						{
+							"key": "emailid",
+							"value": "sumana@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
