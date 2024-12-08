@@ -52,14 +52,18 @@ public class LoginService {
 	public String SignUp(Login login) {
 		
 		if(login.getTypeofuser().equals("admin")) {
+			
 			return "You can't create admin login";
 		}
 		else {
+			login.setIsAdmin(false);
+			login.setIsBlocked(false);
 			Optional<Login> result = loginRepository.findById(login.getEmailid());
 			if(result.isPresent()) {
 				return "Account already exists";
 			}
 			else{
+				
 				loginRepository.save(login);
 				return "Account created successfully";
 			}
