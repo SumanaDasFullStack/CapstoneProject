@@ -1,10 +1,12 @@
 package food.com.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import food.com.entity.CartItem;
 import food.com.entity.Orders;
 import food.com.entity.Payment;
 import food.com.repository.OrderRepository;
@@ -19,9 +21,23 @@ public class OrderService {
 	    private PaymentRepository paymentRepository;
 
 	    // Method to create an order
-	    public Orders createOrder(Orders order) {
+	    public Orders createOrder(Orders order,String emailid) {
 	        // Initially, set the status to "Pending"
 	        order.setStatus("Pending");
+	        order.setEmailid(emailid);
+	       // Process cart items and calculate total price
+	        
+	        if (order.getCartitems() == null) {
+	            order.setCartitems(new ArrayList<>());
+	        }
+	        else {
+	        double total = 0;
+	        for (CartItem item : order.getCartitems()) {
+	            total += item.getPrice() * item.getQuantity();  // Calculate total price based on quantity and price
+	        }
+	        order.setTotalPrice(total);
+	        }
+	       
 	        return orderRepository.save(order);  // Save the order
 	    }
 
@@ -45,8 +61,13 @@ public class OrderService {
 	        return orderRepository.save(order);  // Save updated order
 	    }
 	    
-	    public List<Orders> getAllOrders(){
+	    public List<Orders> getAllOrders(String emailid,boolean isAdmin){
+	    	if(isAdmin)
 	    	return orderRepository.findAll();
+	    	else {
+	    		return orderRepository.findByEmailid(emailid);
+	    	}
+			
 	    }
 	    
 //	    public List<Orders> getOrdersActive(){

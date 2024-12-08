@@ -12,12 +12,15 @@ public interface MenuRepository extends JpaRepository<Menu, String>{
 
 	
 
-	Menu findByMenuId(Long menuId);
+	//Menu findByMenuId(Long menuId);
 
 	//List<Menu> findByRestaurantId(Long restaurantId);
+	 Optional<Menu> findByMenuId(Long menuId);  // Return Optional<Menu>
 
 	List<Menu> findByRestaurantRestaurantId(Long restaurantId);
 
 	List<Menu> findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String searchText, String searchText2);
+
+	//boolean existsById(Long menu_id);
 
 }

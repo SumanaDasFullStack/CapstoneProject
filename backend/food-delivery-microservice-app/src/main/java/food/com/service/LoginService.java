@@ -88,4 +88,20 @@ public class LoginService {
 		
 	}
 	
+	public Login getById(String emailid) {
+		return loginRepository.findByEmailid(emailid);
+	}
+	
+	
+	public Login blockUser(String emailid) {
+		
+		Login existingUser=loginRepository.findById(emailid).orElseThrow(() -> new RuntimeException("User not found"));
+		
+		existingUser.setIsBlocked(true);
+		
+		
+		return loginRepository.save(existingUser);
+			
+		}
+	
 }

@@ -53,6 +53,15 @@ public class LoginController {
 	public Login updateUser(@RequestParam String emailid, @RequestBody Login user) {
 		return loginService.updateUser(emailid, user);
 	}
+	//http://localhost:9090/login/users/getById?emailid=
+	@GetMapping(value = "users/getById",consumes = MediaType.APPLICATION_JSON_VALUE)
+	public Login getById(@RequestParam String emailid) {
+		return loginService.getById(emailid);
+	}
 	
-
+	//http://localhost:9090/login/users/toggleBlock?emailid=
+		@PutMapping(value = "users/toggleBlock",consumes = MediaType.APPLICATION_JSON_VALUE)
+		public Login blockUser(@RequestParam String emailid) {
+			return loginService.blockUser(emailid);
+		}
 }

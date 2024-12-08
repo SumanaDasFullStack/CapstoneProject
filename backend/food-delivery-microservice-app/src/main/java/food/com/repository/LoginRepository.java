@@ -14,4 +14,6 @@ public interface LoginRepository extends JpaRepository<Login, String>{
 
 	List<Login> findByNameContainingIgnoreCaseOrEmailidContainingIgnoreCase(String searchText, String searchText2);
 
+	Login findByEmailid(String emailid);
+
 }

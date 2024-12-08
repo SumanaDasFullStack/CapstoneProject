@@ -22,14 +22,14 @@ public class OrderController {
 	@Autowired
     private OrderService orderService;
 
-    @PostMapping(value = "createOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Orders createOrder(@RequestBody Orders order) {
-        return orderService.createOrder(order);
+    @PostMapping(value = "createOrder/{emailid}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Orders createOrder(@PathVariable String emailid, @RequestBody Orders order) {
+        return orderService.createOrder(order,emailid);
     }
     
-    @GetMapping("allstatus")
-    public List<Orders> getAllOrder() {
-        return orderService.getAllOrders();
+    @GetMapping("allstatus/{emailid}/{isAdmin}")
+    public List<Orders> getAllOrder(@PathVariable String emailid, @PathVariable Boolean isAdmin) {
+        return orderService.getAllOrders(emailid,isAdmin);
     }
 
     @GetMapping("getOrder/{id}")

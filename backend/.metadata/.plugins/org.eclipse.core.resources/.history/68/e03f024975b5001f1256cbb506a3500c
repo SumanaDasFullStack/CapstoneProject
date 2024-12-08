@@ -1,0 +1,25 @@
+package food.com.entity;
+
+import java.util.List;
+
+public class CreateOrderRequest {
+
+    private List<String> cartItems;  // List of cart item IDs (product IDs)
+    private String userEmail;  // The user placing the order
+
+    // Getters and Setters
+    public List<String> getCartItems() {
+        return cartItems;
+    }
+
+    public void setCartItems(List<String> cartItems) {
+        this.cartItems = cartItems;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+}

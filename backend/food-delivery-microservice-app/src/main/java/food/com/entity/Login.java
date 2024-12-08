@@ -15,5 +15,6 @@ public class Login {
 	private String typeofuser;
 	private Boolean isAdmin;
 	private Boolean isBlocked;
-
+	
+	
 }

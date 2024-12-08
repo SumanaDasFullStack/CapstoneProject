@@ -3,11 +3,15 @@ package food.com.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,9 +29,15 @@ public class MenuController {
 	MenuService menuService;
 	//http://localhost:9090/menu/addMenu
 	@PostMapping(value = "addMenu", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public String addMenu(@RequestBody Menu menuItem) {
+	public Menu addMenu(@RequestBody Menu menuItem) {
 		return menuService.addMenu(menuItem);
 	}
+	//http://localhost:9090/menu/updateMenu?menuId=
+		@PutMapping(value = "updateMenu", consumes = MediaType.APPLICATION_JSON_VALUE)
+		public Menu updateMenu(@RequestParam Long menuId,@RequestBody Menu menuItem) {
+			return menuService.editMenu(menuId, menuItem);
+		}
+	
 	//http://localhost:9090/menu/allMenu
 	@GetMapping(value = "allMenu", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public List<Menu> getAllMenu(){
@@ -53,4 +63,18 @@ public class MenuController {
 					return menuService.searchMenus(searchText);
 					
 				}
+				
+				//http://localhost:9090/menu/menus/{restaurantId}
+				 // Delete menu item by ID
+			    @DeleteMapping("deleteMenu/{menuId}")
+			    public ResponseEntity<?> deleteMenu(@PathVariable Long menuId) {
+			        boolean isDeleted = menuService.deleteMenu(menuId);
+			        if (isDeleted) {
+			            return ResponseEntity.noContent().build(); // Status code 204 for successful delete with no content
+			        } else {
+			            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Menu item not found");
+			        }
+			    }
+				
+				
 }

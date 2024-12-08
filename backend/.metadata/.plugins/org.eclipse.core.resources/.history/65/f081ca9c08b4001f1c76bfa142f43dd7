@@ -1,0 +1,80 @@
+package food.com.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import food.com.entity.Login;
+import food.com.entity.Menu;
+import food.com.entity.Restaurants;
+import food.com.repository.MenuRepository;
+import food.com.repository.RestaurantsRepository;
+import jakarta.persistence.EntityNotFoundException;
+
+@Service
+public class MenuService {
+
+	@Autowired
+	MenuRepository menuRepository;
+	@Autowired
+	RestaurantsRepository restaurantsRepository;
+
+	public String addMenu(Menu menuItem) {
+		menuRepository.save(menuItem);
+		return "Menu item added successfully";
+	}
+	
+	public Menu editMenu(String menuId,Menu menuItem) {
+		
+		Menu existingUser=menuRepository.findById(menuId).orElseThrow(() -> new RuntimeException("User not found"));
+		return menuRepository.save(menuItem); 
+//		if (menuRepository.existsById(menuId)) {
+//			// menuItem.setMenuId(menuId);
+//	            return menuRepository.save(menuItem);
+//	        }
+//	        return null; // or throw an exception if the menu doesn't exist
+		
+		try {
+	        if (menuRepository.existsById(menuId)) {
+	        	menuItem.setId(menuId); // Ensure we don't change the ID
+	            return menuRepository.save(menuItem);
+	        } else {
+	            throw new EntityNotFoundException("Menu not found for id: " + menuId); // Custom exception if the menu doesn't exist
+	        }
+	    } catch (Exception e) {
+	        // Log the error
+	        e.printStackTrace();
+	        throw new RuntimeException("Failed to update menu");
+	    }
+		
+	}
+
+	public List<Menu> getallMenu() {
+		return menuRepository.findAll();
+
+	}
+
+	public Menu getMenuDetailsById(Long menu_id) {
+		return menuRepository.findByMenuId(menu_id);
+
+	}
+
+	
+	
+	  public List<Menu> getMenuRestaurantWise(Long restaurantId){ 
+		  List<Menu> menu = menuRepository.findByRestaurantRestaurantId(restaurantId);
+		
+		return menu;
+	  
+	  }
+	  
+	// Method to search menus by name or description
+	    public List<Menu> searchMenus(String searchText) {
+	        return menuRepository.findByNameContainingIgnoreCaseOrDescriptionContainingIgnoreCase(searchText, searchText);
+	    }
+	 
+	  
+	 
+}
